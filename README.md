@@ -1,2 +1,5 @@
 # buckpal-kotlin
-buckpal kotlin micronaut
+Inspired by https://github.com/thombergs/buckpal
+
+* [Kotlin](https://kotlinlang.org)
+* [Micronaut](https://micronaut.io)
