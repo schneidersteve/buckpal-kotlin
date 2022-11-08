@@ -9,6 +9,7 @@ plugins {
 
 micronaut {
     version("3.7.3")
+    testRuntime("spock2")
 }
 
 repositories {
@@ -16,20 +17,17 @@ repositories {
 }
 
 dependencies {
-    kapt("io.micronaut:micronaut-inject-java")
-
     implementation(project(":domain"))
+    implementation(project(":application"))
     implementation(project(":common"))
 
-    implementation("javax.transaction:javax.transaction-api:1.3")
+    implementation("io.micronaut:micronaut-http-server-netty")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.4")
 
     testImplementation("org.spockframework:spock-core")
-    testRuntimeOnly("net.bytebuddy:byte-buddy:1.12.18")
-    testRuntimeOnly("org.objenesis:objenesis:3.3")
-}
+    testImplementation("io.micronaut:micronaut-http-client")
 
-tasks.test {
-    useJUnitPlatform()
+    runtimeOnly("ch.qos.logback:logback-classic")
 }
 
 tasks.withType<KotlinCompile> {

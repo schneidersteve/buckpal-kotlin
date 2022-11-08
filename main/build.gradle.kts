@@ -2,6 +2,12 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
     kotlin("jvm") version "1.7.20"
+    id("io.micronaut.application") version "3.6.4"
+}
+
+micronaut {
+    version("3.7.3")
+    runtime("netty")
 }
 
 repositories {
@@ -9,12 +15,9 @@ repositories {
 }
 
 dependencies {
-    testImplementation(kotlin("test"))
-    testImplementation(project(":testdata"))
-}
+    runtimeOnly(project(":adapters-inbound:web"))
 
-tasks.test {
-    useJUnitPlatform()
+    runtimeOnly("ch.qos.logback:logback-classic")
 }
 
 tasks.withType<KotlinCompile> {
@@ -22,4 +25,8 @@ tasks.withType<KotlinCompile> {
         jvmTarget = "1.8"
         javaParameters = true
     }
+}
+
+application {
+    mainClass.set("MainKt")
 }
