@@ -1,6 +1,7 @@
 package buckpal.kotlin.domain
 
 import java.time.LocalDateTime
+import java.util.*
 
 data class AccountId(val value: Long)
 
@@ -14,7 +15,14 @@ data class AccountId(val value: Long)
  * @property baselineBalance The baseline balance of the account. This was the balance of the account before the first activity in the activityWindow.
  * @property activityWindow The window of latest activities on this account.
  */
-class Account(val id: AccountId?, val baselineBalance: Money, val activityWindow: ActivityWindow) {
+// open for mocking
+open class Account(private val id: AccountId?, val baselineBalance: Money, val activityWindow: ActivityWindow) {
+
+    // open for mocking
+    open fun getId(): Optional<AccountId> {
+        return Optional.ofNullable(id)
+    }
+
     /**
      * Calculates the total balance of the account by adding the activity values to the baseline balance.
      */
@@ -29,7 +37,8 @@ class Account(val id: AccountId?, val baselineBalance: Money, val activityWindow
      * If successful, creates a new activity with a negative value.
      * @return true if the withdrawal was successful, false if not.
      */
-    fun withdraw(money: Money, targetAccountId: AccountId): Boolean {
+    // open for mocking
+    open fun withdraw(money: Money, targetAccountId: AccountId): Boolean {
         if (!mayWithdraw(money)) {
             return false
         }
@@ -51,7 +60,8 @@ class Account(val id: AccountId?, val baselineBalance: Money, val activityWindow
      * If sucessful, creates a new activity with a positive value.
      * @return true if the deposit was successful, false if not.
      */
-    fun deposit(money: Money, sourceAccountId: AccountId): Boolean {
+    // open for mocking
+    open fun deposit(money: Money, sourceAccountId: AccountId): Boolean {
         val deposit = Activity(
             id!!, sourceAccountId, id, LocalDateTime.now(), money
         )

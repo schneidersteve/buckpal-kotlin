@@ -1,3 +1,4 @@
 rootProject.name = 'buckpal-kotlin'
 include('domain')
 include('testdata')
+include('application')

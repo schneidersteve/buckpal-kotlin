@@ -5,8 +5,9 @@ package buckpal.kotlin.domain
 
 import defaultAccount
 import defaultActivity
-import org.assertj.core.api.Assertions.assertThat
 import kotlin.test.Test
+import kotlin.test.assertEquals
+import kotlin.test.assertFalse
 
 class AccountTest {
 
@@ -31,7 +32,7 @@ class AccountTest {
                 )
                 .build()
         val balance = account.calculateBalance()
-        assertThat(balance).isEqualTo(Money.of(1555L))
+        assertEquals(Money.of(1555L), balance)
     }
 
     @Test
@@ -52,9 +53,9 @@ class AccountTest {
             )
             .build()
         val success = account.withdraw(Money.of(555L), AccountId(99L))
-        assertThat(success).isTrue
-        assertThat(account.activityWindow.activities).hasSize(3)
-        assertThat(account.calculateBalance()).isEqualTo(Money.of(1000L))
+        assert(success)
+        assertEquals(3, account.activityWindow.activities.size)
+        assertEquals(Money.of(1000L), account.calculateBalance())
     }
 
     @Test
@@ -75,9 +76,9 @@ class AccountTest {
             )
             .build()
         val success = account.withdraw(Money.of(1556L), AccountId(99L))
-        assertThat(success).isFalse
-        assertThat(account.activityWindow.activities).hasSize(2)
-        assertThat(account.calculateBalance()).isEqualTo(Money.of(1555L))
+        assertFalse(success)
+        assertEquals(2, account.activityWindow.activities.size)
+        assertEquals(Money.of(1555L), account.calculateBalance())
     }
 
     @Test
@@ -98,9 +99,9 @@ class AccountTest {
             )
             .build()
         val success = account.deposit(Money.of(445L), AccountId(99L))
-        assertThat(success).isTrue
-        assertThat(account.activityWindow.activities).hasSize(3)
-        assertThat(account.calculateBalance()).isEqualTo(Money.of(2000L))
+        assert(success)
+        assertEquals(3, account.activityWindow.activities.size)
+        assertEquals(Money.of(2000L), account.calculateBalance())
     }
 
 }

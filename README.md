@@ -2,4 +2,5 @@
 Inspired by https://github.com/thombergs/buckpal
 
 * [Kotlin](https://kotlinlang.org)
-* [Micronaut](https://micronaut.io)
+* [Spock Framework](https://github.com/spockframework/spock)
+* [Micronaut Framework](https://micronaut.io)

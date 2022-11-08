@@ -4,9 +4,9 @@
 package buckpal.kotlin.domain
 
 import defaultActivity
-import org.assertj.core.api.Assertions
 import java.time.LocalDateTime
 import kotlin.test.Test
+import kotlin.test.assertEquals
 
 class ActivityWindowTest {
 
@@ -17,7 +17,7 @@ class ActivityWindowTest {
             defaultActivity()!!.withTimestamp(inBetweenDate()).build(),
             defaultActivity()!!.withTimestamp(endDate()).build()
         )
-        Assertions.assertThat(window.getStartTimestamp()).isEqualTo(startDate())
+        assertEquals(startDate(), window.getStartTimestamp())
     }
 
     @Test
@@ -27,7 +27,7 @@ class ActivityWindowTest {
             defaultActivity()!!.withTimestamp(inBetweenDate()).build(),
             defaultActivity()!!.withTimestamp(endDate()).build()
         )
-        Assertions.assertThat(window.getEndTimestamp()).isEqualTo(endDate())
+        assertEquals(endDate(), window.getEndTimestamp())
     }
 
     @Test
@@ -48,8 +48,8 @@ class ActivityWindowTest {
                 .withTargetAccount(account1)
                 .withMoney(Money.of(500)).build()
         )
-        Assertions.assertThat(window.calculateBalance(account1)).isEqualTo(Money.of(-500))
-        Assertions.assertThat(window.calculateBalance(account2)).isEqualTo(Money.of(500))
+        assertEquals(Money.of(-500), window.calculateBalance(account1))
+        assertEquals(Money.of(500), window.calculateBalance(account2))
     }
 
 }
