@@ -2,7 +2,6 @@ package buckpal.kotlin.inbound.adapter.web
 
 import buckpal.kotlin.application.SendMoneyCommand
 import buckpal.kotlin.application.SendMoneyUseCase
-import buckpal.kotlin.common.WebAdapter
 import buckpal.kotlin.domain.AccountId
 import buckpal.kotlin.domain.Money
 import io.micronaut.http.annotation.Controller
@@ -10,7 +9,6 @@ import io.micronaut.http.annotation.PathVariable
 import io.micronaut.http.annotation.Post
 import kotlinx.coroutines.delay
 
-@WebAdapter
 @Controller("/accounts")
 open class SendMoneyController(private val sendMoneyUseCase: SendMoneyUseCase) {
 
@@ -28,7 +26,7 @@ open class SendMoneyController(private val sendMoneyUseCase: SendMoneyUseCase) {
 
         sendMoneyUseCase.sendMoney(command)
 
-//        delay(1000)
+//        delay(1000L)
     }
 
 }

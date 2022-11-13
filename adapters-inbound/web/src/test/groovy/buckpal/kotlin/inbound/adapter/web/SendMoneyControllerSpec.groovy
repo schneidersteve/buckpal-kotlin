@@ -43,7 +43,7 @@ class SendMoneyControllerSpec extends Specification {
             1 * sendMoneyUseCase.sendMoney(new SendMoneyCommand(
                     new AccountId(41L),
                     new AccountId(42L),
-                    Money.@Companion.of(500L)))
+                    Money.@Companion.of(500L)), _)
     }
 
 }

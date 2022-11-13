@@ -9,6 +9,7 @@ plugins {
 
 micronaut {
     version("3.7.3")
+    testRuntime("spock2")
 }
 
 repositories {
@@ -17,19 +18,18 @@ repositories {
 
 dependencies {
     kapt("io.micronaut:micronaut-inject-java")
+    kapt("io.micronaut.data:micronaut-data-processor")
 
     implementation(project(":domain"))
+    implementation(project(":application"))
 
-    implementation("javax.transaction:javax.transaction-api:1.3")
+    implementation("io.micronaut.data:micronaut-data-r2dbc")
+    implementation("jakarta.persistence:jakarta.persistence-api:3.0.0")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.4")
 
-    testImplementation("org.spockframework:spock-core")
-    testRuntimeOnly("net.bytebuddy:byte-buddy:1.12.18")
-    testRuntimeOnly("org.objenesis:objenesis:3.3")
-}
+    runtimeOnly("ch.qos.logback:logback-classic")
 
-tasks.test {
-    useJUnitPlatform()
+    testImplementation(project(":testdata"))
 }
 
 tasks.withType<KotlinCompile> {
@@ -38,3 +38,7 @@ tasks.withType<KotlinCompile> {
         javaParameters = true
     }
 }
+
+//tasks.withType<GroovyCompile> {
+//    classpath += files(compileKotlin)
+//}

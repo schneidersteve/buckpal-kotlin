@@ -3,8 +3,8 @@
  */
 package buckpal.kotlin.domain
 
-import defaultAccount
-import defaultActivity
+import buckpal.kotlin.testdata.defaultAccount
+import buckpal.kotlin.testdata.defaultActivity
 import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertFalse

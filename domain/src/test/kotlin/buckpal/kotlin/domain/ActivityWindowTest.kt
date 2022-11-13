@@ -3,7 +3,7 @@
  */
 package buckpal.kotlin.domain
 
-import defaultActivity
+import buckpal.kotlin.testdata.defaultActivity
 import java.time.LocalDateTime
 import kotlin.test.Test
 import kotlin.test.assertEquals

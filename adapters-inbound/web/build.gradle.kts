@@ -1,9 +1,9 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
-    kotlin("jvm") version "1.7.20"
+    kotlin("jvm") version "1.7.21"
     groovy
-    kotlin("kapt") version "1.7.20"
+    kotlin("kapt") version "1.7.21"
     id("io.micronaut.library") version "3.6.4"
 }
 
@@ -19,7 +19,6 @@ repositories {
 dependencies {
     implementation(project(":domain"))
     implementation(project(":application"))
-    implementation(project(":common"))
 
     implementation("io.micronaut:micronaut-http-server-netty")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.4")
@@ -32,7 +31,7 @@ dependencies {
 
 tasks.withType<KotlinCompile> {
     kotlinOptions {
-        jvmTarget = "1.8"
+        jvmTarget = "11"
         javaParameters = true
     }
 }

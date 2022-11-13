@@ -1,6 +1,5 @@
 package buckpal.kotlin.application
 
-import buckpal.kotlin.common.UseCase
 import buckpal.kotlin.domain.AccountId
 import buckpal.kotlin.domain.Money
 import jakarta.inject.Singleton
@@ -8,15 +7,14 @@ import java.time.LocalDateTime
 import javax.transaction.Transactional
 
 @Singleton
-@UseCase
 @Transactional
 class SendMoneyUseCaseImpl(
-    val loadAccountPort: LoadAccountPort,
-    val accountLock: AccountLock,
-    val updateAccountStatePort: UpdateAccountStatePort,
-    val moneyTransferProperties: MoneyTransferProperties,
+    private val loadAccountPort: LoadAccountPort,
+    private val accountLock: AccountLock,
+    private val updateAccountStatePort: UpdateAccountStatePort,
+    private val moneyTransferProperties: MoneyTransferProperties,
 ) : SendMoneyUseCase {
-    override fun sendMoney(command: SendMoneyCommand): Boolean {
+    override suspend fun sendMoney(command: SendMoneyCommand): Boolean {
 
         checkThreshold(command)
 

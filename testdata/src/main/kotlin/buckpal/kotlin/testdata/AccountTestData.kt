@@ -1,3 +1,5 @@
+package buckpal.kotlin.testdata
+
 import buckpal.kotlin.domain.Account
 import buckpal.kotlin.domain.AccountId
 import buckpal.kotlin.domain.ActivityWindow

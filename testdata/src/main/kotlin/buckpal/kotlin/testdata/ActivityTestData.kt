@@ -1,3 +1,5 @@
+package buckpal.kotlin.testdata
+
 import buckpal.kotlin.domain.AccountId
 import buckpal.kotlin.domain.Activity
 import buckpal.kotlin.domain.ActivityId
