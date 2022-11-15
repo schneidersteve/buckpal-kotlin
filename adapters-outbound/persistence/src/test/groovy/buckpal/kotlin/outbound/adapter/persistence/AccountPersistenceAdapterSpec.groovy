@@ -47,8 +47,7 @@ class AccountPersistenceAdapterSpec extends Specification {
             var baselineDate = LocalDateTime.of(2018, 8, 10, 0, 0)
             // Kotlin suspend function is extended by one more parameter at compile time
             accountRepository.findById(accountId.value, _) >> new AccountEntity(1L)
-            // Kotlin suspend function is extended by one more parameter at compile time
-            activityRepository.findByOwnerAccountIdAndTimestampGreaterThanEquals(accountId.value, baselineDate, _) >> new AbstractFlow<ActivityEntity>() {
+            activityRepository.findByOwnerAccountIdEqualsAndTimestampGreaterThanEquals(accountId.value, baselineDate) >> new AbstractFlow<ActivityEntity>() {
                 @Override
                 collectSafely(@NotNull FlowCollector<? super ActivityEntity> collector, @NotNull Continuation<? super Unit> continuation) {
                     collector.emit(

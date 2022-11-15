@@ -63,6 +63,7 @@ class SendMoneyUseCaseImpl(
     }
 }
 
+@Singleton
 data class MoneyTransferProperties(var maximumTransferThreshold: Money = Money.of(1_000_000L))
 
 class ThresholdExceededException(threshold: Money, actual: Money) : RuntimeException(

@@ -4,7 +4,7 @@ plugins {
     kotlin("jvm") version "1.7.21"
     groovy
     kotlin("kapt") version "1.7.21"
-    id("io.micronaut.library") version "3.6.4"
+    id("io.micronaut.library") version "3.6.3"
 }
 
 micronaut {

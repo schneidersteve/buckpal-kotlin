@@ -4,7 +4,7 @@ plugins {
     kotlin("jvm") version "1.7.21"
     groovy
     kotlin("kapt") version "1.7.21"
-    id("io.micronaut.library") version "3.6.4"
+    id("io.micronaut.library") version "3.6.3"
 }
 
 micronaut {
@@ -28,6 +28,7 @@ dependencies {
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.4")
 
     runtimeOnly("ch.qos.logback:logback-classic")
+    runtimeOnly("org.jetbrains.kotlinx:kotlinx-coroutines-reactive:1.6.4")
 
     testImplementation(project(":testdata"))
 }

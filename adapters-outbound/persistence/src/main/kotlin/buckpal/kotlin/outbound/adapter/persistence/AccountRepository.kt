@@ -13,7 +13,6 @@ interface AccountRepository : CoroutineCrudRepository<AccountEntity, Long> {
 }
 
 @MappedEntity
-@Table(name = "account")
 data class AccountEntity(
     @GeneratedValue
     @field:Id

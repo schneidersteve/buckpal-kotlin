@@ -39,11 +39,15 @@ class SendMoneyControllerSpec extends Specification {
 
         then:
             response.status == HttpStatus.OK
+
         and:
-            1 * sendMoneyUseCase.sendMoney(new SendMoneyCommand(
-                    new AccountId(41L),
-                    new AccountId(42L),
-                    Money.@Companion.of(500L)), _)
+            // Kotlin suspend function is extended by one more parameter at compile time
+            1 * sendMoneyUseCase.sendMoney(
+                    new SendMoneyCommand(
+                            new AccountId(41L),
+                            new AccountId(42L),
+                            Money.@Companion.of(500L)),
+                    _)
     }
 
 }

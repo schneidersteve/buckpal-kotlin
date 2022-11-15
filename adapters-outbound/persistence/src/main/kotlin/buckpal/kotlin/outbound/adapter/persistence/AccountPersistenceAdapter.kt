@@ -23,8 +23,7 @@ class AccountPersistenceAdapter(
     ): Account {
         val account = accountRepository.findById(accountId.value) ?: throw EntityNotFoundException()
 
-        val activities =
-            activityRepository.findByOwnerAccountIdAndTimestampGreaterThanEquals(accountId.value, baselineDate)
+        val activities = activityRepository.findByOwnerAccountIdEqualsAndTimestampGreaterThanEquals(accountId.value, baselineDate)
 
         val withdrawalBalance = activityRepository.getWithdrawalBalanceUntil(accountId.value, baselineDate) ?: 0L
 
