@@ -1,4 +1,4 @@
-# Example Implementation of a Hexagonal Architecture
+# Kotlin Example Implementation of a Hexagonal/Onion/Clean Architecture
 
 Inspired by https://github.com/thombergs/buckpal
 
