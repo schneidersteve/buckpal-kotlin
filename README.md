@@ -2,6 +2,8 @@
 
 Inspired by https://github.com/thombergs/buckpal
 
+Rust Version: https://github.com/schneidersteve/buckpal-rust
+
 ## Tech Stack
 
 * [Kotlin](https://kotlinlang.org)

@@ -4,6 +4,26 @@ import java.math.BigInteger
 
 data class Money(val amount: BigInteger) {
 
+    companion object {
+        val ZERO: Money = Money.of(0L)
+
+        // Functions
+
+        fun of(value: Long): Money {
+            return Money(BigInteger.valueOf(value))
+        }
+
+        fun add(a: Money, b: Money): Money {
+            return Money(a.amount.add(b.amount))
+        }
+
+        fun subtract(a: Money, b: Money): Money {
+            return Money(a.amount.subtract(b.amount))
+        }
+    }
+
+    // Methods
+
     fun isPositiveOrZero(): Boolean {
         return amount.compareTo(BigInteger.ZERO) >= 0
     }
@@ -34,21 +54,5 @@ data class Money(val amount: BigInteger) {
 
     fun negate(): Money {
         return Money(amount.negate())
-    }
-
-    companion object {
-        val ZERO: Money = Money.of(0L)
-
-        fun of(value: Long): Money {
-            return Money(BigInteger.valueOf(value))
-        }
-
-        fun add(a: Money, b: Money): Money {
-            return Money(a.amount.add(b.amount))
-        }
-
-        fun subtract(a: Money, b: Money): Money {
-            return Money(a.amount.subtract(b.amount))
-        }
     }
 }
