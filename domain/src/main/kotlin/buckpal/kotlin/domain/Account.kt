@@ -28,7 +28,7 @@ open class Account(private val id: AccountId?, val baselineBalance: Money, val a
      */
     fun calculateBalance(): Money {
         return Money.add(
-            baselineBalance, activityWindow.calculateBalance(id)
+            baselineBalance, activityWindow.calculateBalance(id!!)
         )
     }
 

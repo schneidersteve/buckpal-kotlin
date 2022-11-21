@@ -60,19 +60,18 @@ class ActivityWindow(val activities: MutableList<Activity>) {
     /**
      * Calculates the balance by summing up the values of all activities within this window.
      */
-    fun calculateBalance(accountId: AccountId?): Money {
-        val depositBalance: Money =
-            activities.stream().filter { a: Activity -> a.targetAccountId == accountId }.map(Activity::money)
-                .reduce(Money.ZERO, Money::add)
+    fun calculateBalance(accountId: AccountId): Money {
+        val depositBalance = activities
+            .filter { it.targetAccountId == accountId }
+            .map { it.money }
+            .reduce { acc, money -> Money.add(acc, money) }
         val withdrawalBalance: Money =
-            activities.stream().filter { a: Activity -> a.sourceAccountId == accountId }.map(Activity::money)
+            activities.stream()
+                .filter { a: Activity -> a.sourceAccountId == accountId }
+                .map(Activity::money)
                 .reduce(Money.ZERO, Money::add)
         return Money.add(depositBalance, withdrawalBalance.negate())
     }
-
-//    fun getActivities(): List<Activity> {
-//        return Collections.unmodifiableList(activities)
-//    }
 
     fun addActivity(activity: Activity) {
         activities.add(activity)
