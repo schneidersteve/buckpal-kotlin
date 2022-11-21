@@ -64,7 +64,7 @@ class ActivityWindow(val activities: MutableList<Activity>) {
         val depositBalance = activities
             .filter { it.targetAccountId == accountId }
             .map { it.money }
-            .reduceOrNull { acc, money -> Money.add(acc, money) } ?: Money.ZERO
+            .fold(Money.ZERO) { acc, money -> Money.add(acc, money) }
         val withdrawalBalance: Money =
             activities.stream()
                 .filter { a: Activity -> a.sourceAccountId == accountId }
