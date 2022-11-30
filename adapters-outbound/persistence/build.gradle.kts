@@ -30,7 +30,7 @@ dependencies {
     runtimeOnly("ch.qos.logback:logback-classic")
     runtimeOnly("org.jetbrains.kotlinx:kotlinx-coroutines-reactive:1.6.4")
 
-    testImplementation(project(":testdata"))
+//    testImplementation(project(":testdata"))
 }
 
 tasks.withType<KotlinCompile> {

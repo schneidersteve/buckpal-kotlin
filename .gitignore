@@ -8,6 +8,5 @@ adapters-outbound/persistence/build
 application/build
 domain/build
 main/build
-testdata/build
 
 .idea
