@@ -1,9 +1,9 @@
 package buckpal.kotlin.testdata
 
-import buckpal.kotlin.domain.Account
-import buckpal.kotlin.domain.AccountId
-import buckpal.kotlin.domain.ActivityWindow
-import buckpal.kotlin.domain.Money
+import buckpal.kotlin.domain.ar.Account
+import buckpal.kotlin.domain.ar.AccountId
+import buckpal.kotlin.domain.vo.ActivityWindow
+import buckpal.kotlin.domain.vo.Money
 
 fun defaultAccount(): AccountBuilder {
     return AccountBuilder()

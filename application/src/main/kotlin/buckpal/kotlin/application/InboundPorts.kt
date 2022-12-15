@@ -1,7 +1,7 @@
 package buckpal.kotlin.application
 
-import buckpal.kotlin.domain.AccountId
-import buckpal.kotlin.domain.Money
+import buckpal.kotlin.domain.ar.AccountId
+import buckpal.kotlin.domain.vo.Money
 
 interface SendMoneyUseCase {
     suspend fun sendMoney(command: SendMoneyCommand): Boolean

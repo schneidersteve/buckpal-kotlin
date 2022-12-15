@@ -1,35 +1,9 @@
-package buckpal.kotlin.domain
+package buckpal.kotlin.domain.vo
 
+import buckpal.kotlin.domain.ar.AccountId
+import buckpal.kotlin.domain.ar.Activity
 import java.time.LocalDateTime
-import java.util.*
-
-data class ActivityId(val value: Long)
-
-/**
- * A money transfer activity between [Account]s
- *
- * @property ownerAccountId The account that owns this activity.
- * @property sourceAccountId The debited account.
- * @property targetAccountId The credited account.
- * @property timestamp The timestamp of the activity.
- * @property money The money that was transferred between the accounts.
- */
-data class Activity(
-    val id: ActivityId? = null,
-    val ownerAccountId: AccountId,
-    val sourceAccountId: AccountId,
-    val targetAccountId: AccountId,
-    val timestamp: LocalDateTime,
-    val money: Money,
-) {
-    constructor(
-        ownerAccountId: AccountId,
-        sourceAccountId: AccountId,
-        targetAccountId: AccountId,
-        timestamp: LocalDateTime,
-        money: Money,
-    ) : this(null, ownerAccountId, sourceAccountId, targetAccountId, timestamp, money)
-}
+import java.util.Comparator
 
 /**
  * A window of account activities.
@@ -69,7 +43,7 @@ class ActivityWindow(val activities: MutableList<Activity>) {
             activities.stream()
                 .filter { a: Activity -> a.sourceAccountId == accountId }
                 .map(Activity::money)
-                .reduce(Money.ZERO, Money::add)
+                .reduce(Money.ZERO, Money.Companion::add)
         return Money.add(depositBalance, withdrawalBalance.negate())
     }
 

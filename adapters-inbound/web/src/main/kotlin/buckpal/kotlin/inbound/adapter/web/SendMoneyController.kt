@@ -2,12 +2,11 @@ package buckpal.kotlin.inbound.adapter.web
 
 import buckpal.kotlin.application.SendMoneyCommand
 import buckpal.kotlin.application.SendMoneyUseCase
-import buckpal.kotlin.domain.AccountId
-import buckpal.kotlin.domain.Money
+import buckpal.kotlin.domain.ar.AccountId
+import buckpal.kotlin.domain.vo.Money
 import io.micronaut.http.annotation.Controller
 import io.micronaut.http.annotation.PathVariable
 import io.micronaut.http.annotation.Post
-import kotlinx.coroutines.delay
 
 @Controller("/accounts")
 open class SendMoneyController(private val sendMoneyUseCase: SendMoneyUseCase) {

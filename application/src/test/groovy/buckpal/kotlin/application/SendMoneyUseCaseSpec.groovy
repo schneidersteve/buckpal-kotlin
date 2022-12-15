@@ -5,9 +5,9 @@ import buckpal.kotlin.application.SendMoneyCommand
 import buckpal.kotlin.application.SendMoneyUseCase
 import buckpal.kotlin.application.SendMoneyUseCaseImpl
 import buckpal.kotlin.application.UpdateAccountStatePort
-import buckpal.kotlin.domain.Account
-import buckpal.kotlin.domain.AccountId
-import buckpal.kotlin.domain.Money
+import buckpal.kotlin.domain.ar.Account
+import buckpal.kotlin.domain.ar.AccountId
+import buckpal.kotlin.domain.vo.Money
 import kotlin.coroutines.Continuation
 import kotlinx.coroutines.Dispatchers
 import spock.lang.Specification

@@ -3,10 +3,9 @@ package buckpal.kotlin.inbound.adapter.web
 import buckpal.kotlin.application.SendMoneyCommand
 import buckpal.kotlin.application.SendMoneyUseCase
 import buckpal.kotlin.application.SendMoneyUseCaseImpl
-import buckpal.kotlin.domain.AccountId
-import buckpal.kotlin.domain.Money
+import buckpal.kotlin.domain.ar.AccountId
+import buckpal.kotlin.domain.vo.Money
 import io.micronaut.context.annotation.Replaces
-import io.micronaut.http.HttpRequest
 import io.micronaut.http.HttpResponse
 import io.micronaut.http.HttpStatus
 import io.micronaut.http.client.HttpClient

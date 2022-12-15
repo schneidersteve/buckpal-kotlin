@@ -1,6 +1,6 @@
 package buckpal.kotlin.application
 
-import buckpal.kotlin.domain.AccountId
+import buckpal.kotlin.domain.ar.AccountId
 import jakarta.inject.Singleton
 
 @Singleton

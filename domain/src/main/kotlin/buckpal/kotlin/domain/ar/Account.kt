@@ -1,8 +1,11 @@
-package buckpal.kotlin.domain
+package buckpal.kotlin.domain.ar
 
+import buckpal.kotlin.domain.vo.ActivityWindow
+import buckpal.kotlin.domain.vo.Money
 import java.time.LocalDateTime
 import java.util.*
 
+@JvmRecord
 data class AccountId(val value: Long)
 
 /**

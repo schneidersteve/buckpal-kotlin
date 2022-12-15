@@ -1,7 +1,7 @@
 package buckpal.kotlin.application
 
-import buckpal.kotlin.domain.AccountId
-import buckpal.kotlin.domain.Money
+import buckpal.kotlin.domain.ar.AccountId
+import buckpal.kotlin.domain.vo.Money
 import jakarta.inject.Singleton
 import java.time.LocalDateTime
 import javax.transaction.Transactional

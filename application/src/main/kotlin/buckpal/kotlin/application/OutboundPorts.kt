@@ -1,7 +1,7 @@
 package buckpal.kotlin.application
 
-import buckpal.kotlin.domain.Account
-import buckpal.kotlin.domain.AccountId
+import buckpal.kotlin.domain.ar.Account
+import buckpal.kotlin.domain.ar.AccountId
 import java.time.LocalDateTime
 
 interface LoadAccountPort {

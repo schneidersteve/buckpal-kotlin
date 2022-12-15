@@ -1,9 +1,9 @@
 package buckpal.kotlin.outbound.adapter.persistence
 
-import buckpal.kotlin.domain.Account
-import buckpal.kotlin.domain.AccountId
-import buckpal.kotlin.domain.ActivityWindow
-import buckpal.kotlin.domain.Money
+import buckpal.kotlin.domain.ar.Account
+import buckpal.kotlin.domain.ar.AccountId
+import buckpal.kotlin.domain.vo.ActivityWindow
+import buckpal.kotlin.domain.vo.Money
 import io.micronaut.test.extensions.spock.annotation.MicronautTest
 import jakarta.inject.Inject
 import kotlin.Unit

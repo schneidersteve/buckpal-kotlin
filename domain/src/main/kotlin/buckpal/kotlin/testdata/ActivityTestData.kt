@@ -1,9 +1,9 @@
 package buckpal.kotlin.testdata
 
-import buckpal.kotlin.domain.AccountId
-import buckpal.kotlin.domain.Activity
-import buckpal.kotlin.domain.ActivityId
-import buckpal.kotlin.domain.Money
+import buckpal.kotlin.domain.ar.AccountId
+import buckpal.kotlin.domain.ar.Activity
+import buckpal.kotlin.domain.ar.ActivityId
+import buckpal.kotlin.domain.vo.Money
 import java.time.LocalDateTime
 
 fun defaultActivity(): ActivityBuilder? {

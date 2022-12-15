@@ -2,8 +2,8 @@ package buckpal.kotlin.outbound.adapter.persistence
 
 import buckpal.kotlin.application.LoadAccountPort
 import buckpal.kotlin.application.UpdateAccountStatePort
-import buckpal.kotlin.domain.Account
-import buckpal.kotlin.domain.AccountId
+import buckpal.kotlin.domain.ar.Account
+import buckpal.kotlin.domain.ar.AccountId
 import jakarta.inject.Singleton
 import jakarta.persistence.EntityNotFoundException
 import kotlinx.coroutines.flow.toList

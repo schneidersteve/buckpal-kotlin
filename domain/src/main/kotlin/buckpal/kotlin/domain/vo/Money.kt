@@ -1,11 +1,12 @@
-package buckpal.kotlin.domain
+package buckpal.kotlin.domain.vo
 
 import java.math.BigInteger
 
+@JvmRecord
 data class Money(val amount: BigInteger) {
 
     companion object {
-        val ZERO: Money = Money.of(0L)
+        val ZERO: Money = of(0L)
 
         // Functions
 

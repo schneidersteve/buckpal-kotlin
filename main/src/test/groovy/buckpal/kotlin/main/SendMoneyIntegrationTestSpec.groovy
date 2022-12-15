@@ -1,9 +1,9 @@
 package buckpal.kotlin.main
 
 import buckpal.kotlin.application.LoadAccountPort
-import buckpal.kotlin.domain.Account
-import buckpal.kotlin.domain.AccountId
-import buckpal.kotlin.domain.Money
+import buckpal.kotlin.domain.ar.Account
+import buckpal.kotlin.domain.ar.AccountId
+import buckpal.kotlin.domain.vo.Money
 import io.micronaut.http.HttpResponse
 import io.micronaut.http.HttpStatus
 import io.micronaut.http.client.HttpClient
