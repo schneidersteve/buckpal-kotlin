@@ -20,7 +20,7 @@ dependencies {
     implementation("io.micronaut.flyway:micronaut-flyway")
     implementation("io.micronaut.sql:micronaut-jdbc-hikari")
 
-    implementation(project(":adapters-inbound:web"))
+    implementation(project(":adapters-inbound:rest"))
     implementation(project(":adapters-outbound:persistence"))
 
     runtimeOnly("ch.qos.logback:logback-classic")
