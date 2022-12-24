@@ -5,6 +5,8 @@ import buckpal.kotlin.application.q.GetAccountBalanceQueryImpl
 import buckpal.kotlin.domain.ar.AccountId
 import buckpal.kotlin.domain.vo.Money
 import io.micronaut.context.annotation.Replaces
+import io.micronaut.http.HttpResponse
+import io.micronaut.http.HttpStatus
 import io.micronaut.http.client.HttpClient
 import io.micronaut.http.client.annotation.Client
 import io.micronaut.test.annotation.MockBean
@@ -31,10 +33,12 @@ class GetAccountBalanceControllerSpec extends Specification {
 
     def "test get balance"() {
         when:
-            String body = client.toBlocking().retrieve(GET("/41/balance"))
+            HttpResponse<String> response = client.toBlocking().exchange(GET("/41/balance"), String)
 
         then:
-            body == "500"
+            response.status == HttpStatus.OK
+        and:
+            response.body() == "500"
 
         and:
             1 * getAccountBalanceQuery.getAccountBalance(new AccountId(41L), _) >> Money.@Companion.of(500L)

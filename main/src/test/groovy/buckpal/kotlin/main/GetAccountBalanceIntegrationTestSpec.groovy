@@ -1,6 +1,7 @@
 package buckpal.kotlin.main
 
-
+import io.micronaut.http.HttpResponse
+import io.micronaut.http.HttpStatus
 import io.micronaut.http.client.HttpClient
 import io.micronaut.http.client.annotation.Client
 import io.micronaut.test.extensions.spock.annotation.MicronautTest
@@ -22,10 +23,12 @@ class GetAccountBalanceIntegrationTestSpec extends Specification {
 
     def "Get Balance"() {
         when:
-            String body = client.toBlocking().retrieve(GET("/1/balance"))
+            HttpResponse<String> response = client.toBlocking().exchange(GET("/1/balance"), String)
 
         then:
-            body == "500"
+            response.status == HttpStatus.OK
+        and:
+            response.body() == "500"
     }
 
 }
