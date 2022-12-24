@@ -24,8 +24,6 @@ open class SendMoneyController(private val sendMoneyUseCase: SendMoneyUseCase) {
         )
 
         sendMoneyUseCase.sendMoney(command)
-
-//        delay(1000L)
     }
 
 }

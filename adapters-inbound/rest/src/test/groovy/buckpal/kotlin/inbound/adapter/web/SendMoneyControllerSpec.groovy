@@ -2,7 +2,7 @@ package buckpal.kotlin.inbound.adapter.web
 
 import buckpal.kotlin.application.SendMoneyCommand
 import buckpal.kotlin.application.SendMoneyUseCase
-import buckpal.kotlin.application.SendMoneyUseCaseImpl
+import buckpal.kotlin.application.c.SendMoneyUseCaseImpl
 import buckpal.kotlin.domain.ar.AccountId
 import buckpal.kotlin.domain.vo.Money
 import io.micronaut.context.annotation.Replaces

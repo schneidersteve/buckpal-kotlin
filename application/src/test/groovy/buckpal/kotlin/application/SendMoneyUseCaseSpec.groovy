@@ -1,9 +1,9 @@
 import buckpal.kotlin.application.AccountLock
 import buckpal.kotlin.application.LoadAccountPort
-import buckpal.kotlin.application.MoneyTransferProperties
+import buckpal.kotlin.application.c.MoneyTransferProperties
 import buckpal.kotlin.application.SendMoneyCommand
 import buckpal.kotlin.application.SendMoneyUseCase
-import buckpal.kotlin.application.SendMoneyUseCaseImpl
+import buckpal.kotlin.application.c.SendMoneyUseCaseImpl
 import buckpal.kotlin.application.UpdateAccountStatePort
 import buckpal.kotlin.domain.ar.Account
 import buckpal.kotlin.domain.ar.AccountId

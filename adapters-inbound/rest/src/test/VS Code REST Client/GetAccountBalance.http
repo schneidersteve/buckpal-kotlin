@@ -1,0 +1,1 @@
+GET http://localhost:8080/accounts/1/balance HTTP/1.1

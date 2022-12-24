@@ -29,7 +29,8 @@ open class Account(private val id: AccountId?, val baselineBalance: Money, val a
     /**
      * Calculates the total balance of the account by adding the activity values to the baseline balance.
      */
-    fun calculateBalance(): Money {
+    // open for mocking
+    open fun calculateBalance(): Money {
         return Money.add(
             baselineBalance, activityWindow.calculateBalance(id!!)
         )
