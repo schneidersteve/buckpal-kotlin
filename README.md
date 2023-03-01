@@ -2,7 +2,8 @@
 
 Inspired by https://github.com/thombergs/buckpal
 
-Rust Version: https://github.com/schneidersteve/buckpal-rust
+- Rust Version: https://github.com/schneidersteve/buckpal-rust
+- Dart Version: https://github.com/schneidersteve/buckpal-dart
 
 ## Tech Stack
 
