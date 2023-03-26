@@ -2,6 +2,7 @@
 
 Inspired by https://github.com/thombergs/buckpal
 
+- Java Version: https://github.com/schneidersteve/buckpal-java
 - Rust Version: https://github.com/schneidersteve/buckpal-rust
 - Dart Version: https://github.com/schneidersteve/buckpal-dart
 
@@ -41,3 +42,9 @@ Feature: Send Money
 
     And accounts have been updated
 ```
+
+# Gradle Examples
+
+> ./gradlew test
+
+> ./gradlew test -t

@@ -2,7 +2,6 @@ package buckpal.kotlin.domain.ar
 
 import buckpal.kotlin.domain.vo.Money
 import java.time.LocalDateTime
-import java.util.*
 
 @JvmRecord
 data class ActivityId(val value: Long)
