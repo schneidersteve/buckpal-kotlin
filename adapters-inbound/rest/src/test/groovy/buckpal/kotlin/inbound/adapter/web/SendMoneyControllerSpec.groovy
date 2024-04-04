@@ -6,6 +6,7 @@ import buckpal.kotlin.application.c.SendMoneyUseCaseImpl
 import buckpal.kotlin.domain.ar.AccountId
 import buckpal.kotlin.domain.vo.Money
 import io.micronaut.context.annotation.Replaces
+import io.micronaut.http.HttpRequest
 import io.micronaut.http.HttpResponse
 import io.micronaut.http.HttpStatus
 import io.micronaut.http.client.HttpClient
@@ -16,8 +17,6 @@ import jakarta.inject.Inject
 import spock.lang.AutoCleanup
 import spock.lang.Shared
 import spock.lang.Specification
-
-import static io.micronaut.http.HttpRequest.POST
 
 @MicronautTest
 class SendMoneyControllerSpec extends Specification {
@@ -34,7 +33,7 @@ class SendMoneyControllerSpec extends Specification {
 
     def "test send money"() {
         when:
-            HttpResponse response = client.toBlocking().exchange(POST("/send/41/42/500", ""))
+            HttpResponse response = client.toBlocking().exchange(HttpRequest.POST("/send/41/42/500", ""))
 
         then:
             response.status == HttpStatus.OK
@@ -42,11 +41,11 @@ class SendMoneyControllerSpec extends Specification {
         and:
             // Kotlin suspend function is extended by one more parameter at compile time
             1 * sendMoneyUseCase.sendMoney(
-                    new SendMoneyCommand(
-                            new AccountId(41L),
-                            new AccountId(42L),
-                            Money.@Companion.of(500L)),
-                    _)
+                new SendMoneyCommand(
+                    new AccountId(41L),
+                    new AccountId(42L),
+                    Money.@Companion.of(500L)),
+                _)
     }
 
 }

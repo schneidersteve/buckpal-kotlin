@@ -1,5 +1,6 @@
 package buckpal.kotlin.main
 
+import io.micronaut.http.HttpRequest
 import io.micronaut.http.HttpResponse
 import io.micronaut.http.HttpStatus
 import io.micronaut.http.client.HttpClient
@@ -9,8 +10,6 @@ import jakarta.inject.Inject
 import spock.lang.AutoCleanup
 import spock.lang.Shared
 import spock.lang.Specification
-
-import static io.micronaut.http.HttpRequest.GET
 
 @MicronautTest(transactional = false)
 class GetAccountBalanceIntegrationTestSpec extends Specification {
@@ -23,7 +22,7 @@ class GetAccountBalanceIntegrationTestSpec extends Specification {
 
     def "Get Balance"() {
         when:
-            HttpResponse<String> response = client.toBlocking().exchange(GET("/1/balance"), String)
+            HttpResponse<String> response = client.toBlocking().exchange(HttpRequest.GET("/1/balance"), String)
 
         then:
             response.status == HttpStatus.OK

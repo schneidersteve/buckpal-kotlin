@@ -6,15 +6,12 @@ import buckpal.kotlin.domain.vo.ActivityWindow
 import buckpal.kotlin.domain.vo.Money
 import io.micronaut.test.extensions.spock.annotation.MicronautTest
 import jakarta.inject.Inject
-import kotlin.Unit
 import kotlin.coroutines.Continuation
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.flow.AbstractFlow
-import kotlinx.coroutines.flow.FlowCollector
 import kotlinx.coroutines.flow.FlowKt
-import org.jetbrains.annotations.NotNull
 import spock.lang.Shared
 import spock.lang.Specification
+
 import java.time.LocalDateTime
 
 import static buckpal.kotlin.testdata.AccountTestDataKt.defaultAccount

@@ -1,13 +1,13 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
-    kotlin("jvm") version "1.7.21"
-    groovy
-    id("io.micronaut.application") version "3.6.3"
+    id("org.jetbrains.kotlin.jvm") version "1.9.23"
+    id("com.google.devtools.ksp") version "1.9.23-1.0.19"
+    id("groovy")
+    id("io.micronaut.application") version "4.3.5"
 }
 
 micronaut {
-    version("3.7.3")
     runtime("netty")
     testRuntime("spock2")
 }
@@ -27,19 +27,18 @@ dependencies {
     runtimeOnly("com.h2database:h2")
     runtimeOnly("io.r2dbc:r2dbc-h2")
     runtimeOnly("io.r2dbc:r2dbc-pool")
+    runtimeOnly("org.yaml:snakeyaml")
 
     testImplementation(project(":domain"))
     testImplementation(project(":application"))
 
     testImplementation("io.micronaut:micronaut-http-client")
-    testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.4")
+    testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.8.0")
 }
 
 tasks.withType<KotlinCompile> {
-    kotlinOptions {
-        jvmTarget = "17"
-        javaParameters = true
-    }
+    kotlinOptions.jvmTarget = "17"
+    kotlinOptions.javaParameters = true
 }
 
 application {

@@ -5,6 +5,7 @@ import buckpal.kotlin.application.q.GetAccountBalanceQueryImpl
 import buckpal.kotlin.domain.ar.AccountId
 import buckpal.kotlin.domain.vo.Money
 import io.micronaut.context.annotation.Replaces
+import io.micronaut.http.HttpRequest
 import io.micronaut.http.HttpResponse
 import io.micronaut.http.HttpStatus
 import io.micronaut.http.client.HttpClient
@@ -15,8 +16,6 @@ import jakarta.inject.Inject
 import spock.lang.AutoCleanup
 import spock.lang.Shared
 import spock.lang.Specification
-
-import static io.micronaut.http.HttpRequest.GET
 
 @MicronautTest
 class GetAccountBalanceControllerSpec extends Specification {
@@ -33,7 +32,7 @@ class GetAccountBalanceControllerSpec extends Specification {
 
     def "test get balance"() {
         when:
-            HttpResponse<String> response = client.toBlocking().exchange(GET("/41/balance"), String)
+            HttpResponse<String> response = client.toBlocking().exchange(HttpRequest.GET("/41/balance"), String)
 
         then:
             response.status == HttpStatus.OK

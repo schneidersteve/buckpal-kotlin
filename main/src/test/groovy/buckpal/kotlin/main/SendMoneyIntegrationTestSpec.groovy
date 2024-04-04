@@ -4,6 +4,7 @@ import buckpal.kotlin.application.LoadAccountPort
 import buckpal.kotlin.domain.ar.Account
 import buckpal.kotlin.domain.ar.AccountId
 import buckpal.kotlin.domain.vo.Money
+import io.micronaut.http.HttpRequest
 import io.micronaut.http.HttpResponse
 import io.micronaut.http.HttpStatus
 import io.micronaut.http.client.HttpClient
@@ -17,8 +18,6 @@ import spock.lang.Shared
 import spock.lang.Specification
 
 import java.time.LocalDateTime
-
-import static io.micronaut.http.HttpRequest.POST
 
 @MicronautTest(transactional = false)
 class SendMoneyIntegrationTestSpec extends Specification {
@@ -52,7 +51,7 @@ class SendMoneyIntegrationTestSpec extends Specification {
             var money = Money.@Companion.of(500L)
 
         when: "money is send"
-            HttpResponse response = client.toBlocking().exchange(POST("""/send/$sourceAccountId.value/$targetAccountId.value/$money.amount""", ""))
+            HttpResponse response = client.toBlocking().exchange(HttpRequest.POST("""/send/$sourceAccountId.value/$targetAccountId.value/$money.amount""", ""))
 
             sourceAccount = loadAccountPort.loadAccount(sourceAccountId, LocalDateTime.now(), continuation)
             targetAccount = loadAccountPort.loadAccount(targetAccountId, LocalDateTime.now(), continuation)

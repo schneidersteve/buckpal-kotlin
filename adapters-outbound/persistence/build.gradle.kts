@@ -1,14 +1,13 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
-    kotlin("jvm") version "1.7.21"
-    groovy
-    kotlin("kapt") version "1.7.21"
-    id("io.micronaut.library") version "3.6.3"
+    id("org.jetbrains.kotlin.jvm") version "1.9.23"
+    id("com.google.devtools.ksp") version "1.9.23-1.0.19"
+    id("groovy")
+    id("io.micronaut.library") version "4.3.5"
 }
 
 micronaut {
-    version("3.7.3")
     testRuntime("spock2")
 }
 
@@ -17,27 +16,24 @@ repositories {
 }
 
 dependencies {
-    kapt("io.micronaut:micronaut-inject-java")
-    kapt("io.micronaut.data:micronaut-data-processor")
+    ksp("io.micronaut.data:micronaut-data-processor")
 
     implementation(project(":domain"))
     implementation(project(":application"))
 
     implementation("io.micronaut.data:micronaut-data-r2dbc")
-    implementation("jakarta.persistence:jakarta.persistence-api:3.0.0")
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.4")
+    implementation("jakarta.persistence:jakarta.persistence-api:3.1.0")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.8.0")
 
     runtimeOnly("ch.qos.logback:logback-classic")
-    runtimeOnly("org.jetbrains.kotlinx:kotlinx-coroutines-reactive:1.6.4")
+//    runtimeOnly("org.jetbrains.kotlinx:kotlinx-coroutines-reactor:1.8.0")
 
 //    testImplementation(project(":testdata"))
 }
 
 tasks.withType<KotlinCompile> {
-    kotlinOptions {
-        jvmTarget = "17"
-        javaParameters = true
-    }
+    kotlinOptions.jvmTarget = "17"
+    kotlinOptions.javaParameters = true
 }
 
 //tasks.withType<GroovyCompile> {
