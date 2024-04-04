@@ -6,6 +6,7 @@
     </JetCodeStyleSettings>
     <codeStyleSettings language="Groovy">
       <indentOptions>
+        <option name="CONTINUATION_INDENT_SIZE" value="4" />
         <option name="LABEL_INDENT_SIZE" value="4" />
       </indentOptions>
     </codeStyleSettings>
