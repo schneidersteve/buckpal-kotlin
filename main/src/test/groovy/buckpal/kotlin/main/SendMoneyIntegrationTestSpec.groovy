@@ -11,8 +11,8 @@ import io.micronaut.http.client.HttpClient
 import io.micronaut.http.client.annotation.Client
 import io.micronaut.test.extensions.spock.annotation.MicronautTest
 import jakarta.inject.Inject
-import kotlin.coroutines.Continuation
-import kotlinx.coroutines.Dispatchers
+import kotlin.coroutines.EmptyCoroutineContext
+import kotlinx.coroutines.BuildersKt
 import spock.lang.AutoCleanup
 import spock.lang.Shared
 import spock.lang.Specification
@@ -32,20 +32,21 @@ class SendMoneyIntegrationTestSpec extends Specification {
     @Inject
     LoadAccountPort loadAccountPort
 
-    // Kotlin suspend function parameter
-    var continuation = Mock(Continuation) {
-        getContext() >> Dispatchers.Default
-    }
-
     def "Send Money"() {
         given: "initial source account balance"
             var sourceAccountId = new AccountId(1L)
-            Account sourceAccount = loadAccountPort.loadAccount(sourceAccountId, LocalDateTime.now(), continuation)
+            Account sourceAccount = BuildersKt.runBlocking(
+                EmptyCoroutineContext.INSTANCE,
+                (scope, continuation) -> loadAccountPort.loadAccount(sourceAccountId, LocalDateTime.now(), continuation)
+            )
             var initialSourceBalance = sourceAccount.calculateBalance()
 
         and: "initial target account balance"
             var targetAccountId = new AccountId(2L)
-            Account targetAccount = loadAccountPort.loadAccount(targetAccountId, LocalDateTime.now(), continuation)
+            Account targetAccount = BuildersKt.runBlocking(
+                EmptyCoroutineContext.INSTANCE,
+                (scope, continuation) -> loadAccountPort.loadAccount(targetAccountId, LocalDateTime.now(), continuation)
+            )
             var initialTargetBalance = targetAccount.calculateBalance()
         and:
             var money = Money.@Companion.of(500L)
@@ -53,8 +54,14 @@ class SendMoneyIntegrationTestSpec extends Specification {
         when: "money is send"
             HttpResponse response = client.toBlocking().exchange(HttpRequest.POST("""/send/$sourceAccountId.value/$targetAccountId.value/$money.amount""", ""))
 
-            sourceAccount = loadAccountPort.loadAccount(sourceAccountId, LocalDateTime.now(), continuation)
-            targetAccount = loadAccountPort.loadAccount(targetAccountId, LocalDateTime.now(), continuation)
+            sourceAccount = BuildersKt.runBlocking(
+                EmptyCoroutineContext.INSTANCE,
+                (scope, continuation) -> loadAccountPort.loadAccount(sourceAccountId, LocalDateTime.now(), continuation)
+            )
+            targetAccount = BuildersKt.runBlocking(
+                EmptyCoroutineContext.INSTANCE,
+                (scope, continuation) -> loadAccountPort.loadAccount(targetAccountId, LocalDateTime.now(), continuation)
+            )
 
         then: "http status is OK"
             response.status == HttpStatus.OK

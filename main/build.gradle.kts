@@ -28,6 +28,10 @@ dependencies {
     runtimeOnly("io.r2dbc:r2dbc-h2")
     runtimeOnly("io.r2dbc:r2dbc-pool")
     runtimeOnly("org.yaml:snakeyaml")
+    runtimeOnly("io.micronaut.reactor:micronaut-reactor")
+    runtimeOnly("io.micronaut.kotlin:micronaut-kotlin-runtime")
+    runtimeOnly("org.jetbrains.kotlin:kotlin-reflect:1.9.23")
+    runtimeOnly("org.jetbrains.kotlinx:kotlinx-coroutines-reactor:1.8.0")
 
     testImplementation(project(":domain"))
     testImplementation(project(":application"))

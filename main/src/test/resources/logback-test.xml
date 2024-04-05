@@ -12,6 +12,6 @@
         <appender-ref ref="STDOUT" />
     </root>
 
-    <logger name="buckpal.kotlin.outbound.adapter.persistence" level="debug" />
+<!--    <logger name="buckpal.kotlin.outbound.adapter.persistence" level="TRACE" />-->
 <!--    <logger name="io.micronaut.data" level="debug" />-->
 </configuration>
