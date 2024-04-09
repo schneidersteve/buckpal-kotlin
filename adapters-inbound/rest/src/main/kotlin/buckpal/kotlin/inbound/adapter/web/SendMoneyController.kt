@@ -9,7 +9,7 @@ import io.micronaut.http.annotation.PathVariable
 import io.micronaut.http.annotation.Post
 
 @Controller("/accounts")
-open class SendMoneyController(private val sendMoneyUseCase: SendMoneyUseCase) {
+internal open class SendMoneyController(private val sendMoneyUseCase: SendMoneyUseCase) {
 
     @Post("/send/{sourceAccountId}/{targetAccountId}/{amount}")
     suspend fun sendMoney(

@@ -11,7 +11,7 @@ import kotlinx.coroutines.flow.Flow
 import java.time.LocalDateTime
 
 @R2dbcRepository(dialect = Dialect.H2)
-interface ActivityRepository : CoroutineCrudRepository<ActivityEntity, Long> {
+internal interface ActivityRepository : CoroutineCrudRepository<ActivityEntity, Long> {
 
     fun findByOwnerAccountIdEqualsAndTimestampGreaterThanEquals(
         ownerAccountId: Long,

@@ -12,7 +12,7 @@ import org.slf4j.LoggerFactory
 import java.time.LocalDateTime
 
 @Singleton
-class AccountPersistenceAdapter(
+internal class AccountPersistenceAdapter(
     private val accountRepository: AccountRepository,
     private val activityRepository: ActivityRepository,
     private val accountMapper: AccountMapper,

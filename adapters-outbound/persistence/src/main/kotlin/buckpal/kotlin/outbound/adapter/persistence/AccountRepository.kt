@@ -9,7 +9,7 @@ import jakarta.persistence.Id
 import jakarta.persistence.Table
 
 @R2dbcRepository(dialect = Dialect.H2)
-interface AccountRepository : CoroutineCrudRepository<AccountEntity, Long> {
+internal interface AccountRepository : CoroutineCrudRepository<AccountEntity, Long> {
 }
 
 @MappedEntity

@@ -13,7 +13,7 @@ import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertFalse
 
-class AccountTest {
+internal class AccountTest {
 
     @Test
     fun calculatesBalance() {

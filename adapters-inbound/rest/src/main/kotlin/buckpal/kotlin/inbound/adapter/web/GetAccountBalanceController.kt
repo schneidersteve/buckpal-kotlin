@@ -8,7 +8,7 @@ import io.micronaut.http.annotation.Get
 import io.micronaut.http.annotation.PathVariable
 
 @Controller("/accounts")
-open class GetAccountBalanceController(private val getAccountBalanceQuery: GetAccountBalanceQuery) {
+internal open class GetAccountBalanceController(private val getAccountBalanceQuery: GetAccountBalanceQuery) {
 
     @Get("/{accountId}/balance", produces = [MediaType.TEXT_PLAIN])
     suspend fun getAccountBalance(

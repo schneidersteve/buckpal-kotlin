@@ -11,7 +11,7 @@ import java.time.LocalDateTime
 import kotlin.test.Test
 import kotlin.test.assertEquals
 
-class ActivityWindowTest {
+internal class ActivityWindowTest {
 
     @Test
     fun calculatesStartTimestamp() {
